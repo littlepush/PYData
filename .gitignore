@@ -18,3 +18,5 @@ DerivedData
 .idea/
 *.build.log
 *.framework
+Pods/
+*.lock

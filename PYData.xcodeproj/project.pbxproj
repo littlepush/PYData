@@ -1,319 +1,973 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		E66F1DB4198A4112004F08A2 /* PYKernel+PYData.h in Headers */ = {isa = PBXBuildFile; fileRef = E66F1DB2198A4112004F08A2 /* PYKernel+PYData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E66F1DB5198A4112004F08A2 /* PYKernel+PYData.m in Sources */ = {isa = PBXBuildFile; fileRef = E66F1DB3198A4112004F08A2 /* PYKernel+PYData.m */; };
-		E67AE0F916F417A5000D6AB6 /* PYSqlStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = E67AE0F816F417A5000D6AB6 /* PYSqlStatement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E67AE12F16F5727F000D6AB6 /* PYSqlStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = E67AE12E16F5727F000D6AB6 /* PYSqlStatement.m */; };
-		E689E8A21997F1A3004F3CAD /* PYDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E689E8A01997F1A3004F3CAD /* PYDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E689E8A31997F1A3004F3CAD /* PYDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E689E8A11997F1A3004F3CAD /* PYDataManager.m */; };
-		E68B6F5516B034BE00E1B3FD /* PYGlobalDataCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E68B6F5116B034BE00E1B3FD /* PYGlobalDataCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E68B6F5616B034BE00E1B3FD /* PYGlobalDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E68B6F5216B034BE00E1B3FD /* PYGlobalDataCache.m */; };
-		E68B6F5716B034BE00E1B3FD /* PYKeyedDb.h in Headers */ = {isa = PBXBuildFile; fileRef = E68B6F5316B034BE00E1B3FD /* PYKeyedDb.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E68B6F5816B034BE00E1B3FD /* PYKeyedDb.m in Sources */ = {isa = PBXBuildFile; fileRef = E68B6F5416B034BE00E1B3FD /* PYKeyedDb.m */; };
-		E6D57F0915F5A7E000C1ED25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67EDAC915D4DE70001F12CF /* Foundation.framework */; };
-		E6D57F1315F5A7EB00C1ED25 /* PYData.h in Headers */ = {isa = PBXBuildFile; fileRef = E67EDAE515D4DEA9001F12CF /* PYData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E6D57F1415F5A7EB00C1ED25 /* PYData.m in Sources */ = {isa = PBXBuildFile; fileRef = E67EDAE615D4DEA9001F12CF /* PYData.m */; };
-		E6D57F1715F5A7EB00C1ED25 /* PYDataPredefination.h in Headers */ = {isa = PBXBuildFile; fileRef = E67EDAF115D4E0B7001F12CF /* PYDataPredefination.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E6F2AE2117C143D70004463E /* PYObject.h in Headers */ = {isa = PBXBuildFile; fileRef = E6F2AE2017C143D70004463E /* PYObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E6F2AE2417C15AF10004463E /* PYObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F2AE2317C15AF10004463E /* PYObject.m */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		E66F1DB2198A4112004F08A2 /* PYKernel+PYData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PYKernel+PYData.h"; sourceTree = "<group>"; };
-		E66F1DB3198A4112004F08A2 /* PYKernel+PYData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PYKernel+PYData.m"; sourceTree = "<group>"; };
-		E675CA4B179DA691002BBB24 /* PYCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PYCore.framework; path = System/Library/Frameworks/PYCore.framework; sourceTree = SDKROOT; };
-		E67AE0F816F417A5000D6AB6 /* PYSqlStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSqlStatement.h; sourceTree = "<group>"; };
-		E67AE12E16F5727F000D6AB6 /* PYSqlStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSqlStatement.m; sourceTree = "<group>"; };
-		E67EDAC915D4DE70001F12CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E67EDAE515D4DEA9001F12CF /* PYData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYData.h; sourceTree = "<group>"; };
-		E67EDAE615D4DEA9001F12CF /* PYData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYData.m; sourceTree = "<group>"; };
-		E67EDAEB15D4DFC6001F12CF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		E67EDAF115D4E0B7001F12CF /* PYDataPredefination.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYDataPredefination.h; sourceTree = "<group>"; };
-		E689E8A01997F1A3004F3CAD /* PYDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYDataManager.h; sourceTree = "<group>"; };
-		E689E8A11997F1A3004F3CAD /* PYDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYDataManager.m; sourceTree = "<group>"; };
-		E68B6F5116B034BE00E1B3FD /* PYGlobalDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYGlobalDataCache.h; sourceTree = "<group>"; };
-		E68B6F5216B034BE00E1B3FD /* PYGlobalDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYGlobalDataCache.m; sourceTree = "<group>"; };
-		E68B6F5316B034BE00E1B3FD /* PYKeyedDb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYKeyedDb.h; sourceTree = "<group>"; };
-		E68B6F5416B034BE00E1B3FD /* PYKeyedDb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYKeyedDb.m; sourceTree = "<group>"; };
-		E6B8E1CB15F0EAD100291E27 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E6D57F0815F5A7E000C1ED25 /* libPYData.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPYData.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6D57F0C15F5A7E000C1ED25 /* PYData-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PYData-Prefix.pch"; sourceTree = "<group>"; };
-		E6F2AE2017C143D70004463E /* PYObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYObject.h; sourceTree = "<group>"; };
-		E6F2AE2317C15AF10004463E /* PYObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYObject.m; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		E6D57F0515F5A7E000C1ED25 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E6D57F0915F5A7E000C1ED25 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		E67EDAB815D4DE70001F12CF = {
-			isa = PBXGroup;
-			children = (
-				E67EDAE415D4DE89001F12CF /* static-library */,
-				E6D57F0A15F5A7E000C1ED25 /* PYData */,
-				E67EDAC615D4DE70001F12CF /* Frameworks */,
-				E67EDAC415D4DE70001F12CF /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		E67EDAC415D4DE70001F12CF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E6D57F0815F5A7E000C1ED25 /* libPYData.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E67EDAC615D4DE70001F12CF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E675CA4B179DA691002BBB24 /* PYCore.framework */,
-				E6B8E1CB15F0EAD100291E27 /* CoreLocation.framework */,
-				E67EDAEB15D4DFC6001F12CF /* libsqlite3.dylib */,
-				E67EDAC915D4DE70001F12CF /* Foundation.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E67EDAE415D4DE89001F12CF /* static-library */ = {
-			isa = PBXGroup;
-			children = (
-				E67AE0F816F417A5000D6AB6 /* PYSqlStatement.h */,
-				E67AE12E16F5727F000D6AB6 /* PYSqlStatement.m */,
-				E68B6F5116B034BE00E1B3FD /* PYGlobalDataCache.h */,
-				E68B6F5216B034BE00E1B3FD /* PYGlobalDataCache.m */,
-				E68B6F5316B034BE00E1B3FD /* PYKeyedDb.h */,
-				E68B6F5416B034BE00E1B3FD /* PYKeyedDb.m */,
-				E67EDAE515D4DEA9001F12CF /* PYData.h */,
-				E67EDAE615D4DEA9001F12CF /* PYData.m */,
-				E67EDAF115D4E0B7001F12CF /* PYDataPredefination.h */,
-				E6F2AE2017C143D70004463E /* PYObject.h */,
-				E6F2AE2317C15AF10004463E /* PYObject.m */,
-				E66F1DB2198A4112004F08A2 /* PYKernel+PYData.h */,
-				E66F1DB3198A4112004F08A2 /* PYKernel+PYData.m */,
-				E689E8A01997F1A3004F3CAD /* PYDataManager.h */,
-				E689E8A11997F1A3004F3CAD /* PYDataManager.m */,
-			);
-			path = "static-library";
-			sourceTree = "<group>";
-		};
-		E6D57F0A15F5A7E000C1ED25 /* PYData */ = {
-			isa = PBXGroup;
-			children = (
-				E6D57F0B15F5A7E000C1ED25 /* Supporting Files */,
-			);
-			path = PYData;
-			sourceTree = "<group>";
-		};
-		E6D57F0B15F5A7E000C1ED25 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E6D57F0C15F5A7E000C1ED25 /* PYData-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		E6D57F0615F5A7E000C1ED25 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E6D57F1315F5A7EB00C1ED25 /* PYData.h in Headers */,
-				E6D57F1715F5A7EB00C1ED25 /* PYDataPredefination.h in Headers */,
-				E68B6F5516B034BE00E1B3FD /* PYGlobalDataCache.h in Headers */,
-				E689E8A21997F1A3004F3CAD /* PYDataManager.h in Headers */,
-				E66F1DB4198A4112004F08A2 /* PYKernel+PYData.h in Headers */,
-				E68B6F5716B034BE00E1B3FD /* PYKeyedDb.h in Headers */,
-				E6F2AE2117C143D70004463E /* PYObject.h in Headers */,
-				E67AE0F916F417A5000D6AB6 /* PYSqlStatement.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
-/* Begin PBXNativeTarget section */
-		E6D57F0715F5A7E000C1ED25 /* PYData */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E6D57F1015F5A7E000C1ED25 /* Build configuration list for PBXNativeTarget "PYData" */;
-			buildPhases = (
-				E6D57F0415F5A7E000C1ED25 /* Sources */,
-				E6D57F0515F5A7E000C1ED25 /* Frameworks */,
-				E6D57F0615F5A7E000C1ED25 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PYData;
-			productName = PYData;
-			productReference = E6D57F0815F5A7E000C1ED25 /* libPYData.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		E67EDABA15D4DE70001F12CF /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				CLASSPREFIX = PY;
-				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "Push Lab";
-			};
-			buildConfigurationList = E67EDABD15D4DE70001F12CF /* Build configuration list for PBXProject "PYData" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = E67EDAB815D4DE70001F12CF;
-			productRefGroup = E67EDAC415D4DE70001F12CF /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				E6D57F0715F5A7E000C1ED25 /* PYData */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		E6D57F0415F5A7E000C1ED25 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E66F1DB5198A4112004F08A2 /* PYKernel+PYData.m in Sources */,
-				E6D57F1415F5A7EB00C1ED25 /* PYData.m in Sources */,
-				E689E8A31997F1A3004F3CAD /* PYDataManager.m in Sources */,
-				E6F2AE2417C15AF10004463E /* PYObject.m in Sources */,
-				E68B6F5616B034BE00E1B3FD /* PYGlobalDataCache.m in Sources */,
-				E68B6F5816B034BE00E1B3FD /* PYKeyedDb.m in Sources */,
-				E67AE12F16F5727F000D6AB6 /* PYSqlStatement.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin XCBuildConfiguration section */
-		E67EDADF15D4DE70001F12CF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		E67EDAE015D4DE70001F12CF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E6D57F1115F5A7E000C1ED25 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				DSTROOT = /tmp/PYData.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PYData/PYData-Prefix.pch";
-				HEADER_SEARCH_PATHS = "";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				VALID_ARCHS = "armv7 armv7s i386 arm64";
-			};
-			name = Debug;
-		};
-		E6D57F1215F5A7E000C1ED25 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				DSTROOT = /tmp/PYData.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PYData/PYData-Prefix.pch";
-				HEADER_SEARCH_PATHS = "";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				VALID_ARCHS = "armv7 armv7s i386 arm64";
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		E67EDABD15D4DE70001F12CF /* Build configuration list for PBXProject "PYData" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E67EDADF15D4DE70001F12CF /* Debug */,
-				E67EDAE015D4DE70001F12CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E6D57F1015F5A7E000C1ED25 /* Build configuration list for PBXNativeTarget "PYData" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E6D57F1115F5A7E000C1ED25 /* Debug */,
-				E6D57F1215F5A7E000C1ED25 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = E67EDABA15D4DE70001F12CF /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>13378919EDF389AE06ED1C6E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>474B8F8FC3948901745FC639</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FD62CB346CAE7F2CFB23F1DD</string>
+				<string>553CCF7A1AC719DE1D1B45B3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>553CCF7A1AC719DE1D1B45B3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-PYData.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-PYData/Pods-PYData.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>81F048E2AE1EC595EC6F3EF4</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-PYData/Pods-PYData-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>868F1AC3CF9BA278D4E96FD5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F58A86A1B7790DC6DFCEAF72</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E66F1DB2198A4112004F08A2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PYKernel+PYData.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E66F1DB3198A4112004F08A2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PYKernel+PYData.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E66F1DB4198A4112004F08A2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E66F1DB2198A4112004F08A2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E66F1DB5198A4112004F08A2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E66F1DB3198A4112004F08A2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E675CA4B179DA691002BBB24</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>PYCore.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/PYCore.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>E67AE0F816F417A5000D6AB6</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PYSqlStatement.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E67AE0F916F417A5000D6AB6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E67AE0F816F417A5000D6AB6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E67AE12E16F5727F000D6AB6</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PYSqlStatement.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E67AE12F16F5727F000D6AB6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E67AE12E16F5727F000D6AB6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E67EDAB815D4DE70001F12CF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E67EDAE415D4DE89001F12CF</string>
+				<string>E6D57F0A15F5A7E000C1ED25</string>
+				<string>E67EDAC615D4DE70001F12CF</string>
+				<string>E67EDAC415D4DE70001F12CF</string>
+				<string>474B8F8FC3948901745FC639</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E67EDABA15D4DE70001F12CF</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>CLASSPREFIX</key>
+				<string>PY</string>
+				<key>LastUpgradeCheck</key>
+				<string>0460</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Push Lab</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>E67EDABD15D4DE70001F12CF</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+			</array>
+			<key>mainGroup</key>
+			<string>E67EDAB815D4DE70001F12CF</string>
+			<key>productRefGroup</key>
+			<string>E67EDAC415D4DE70001F12CF</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>E6D57F0715F5A7E000C1ED25</string>
+			</array>
+		</dict>
+		<key>E67EDABD15D4DE70001F12CF</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E67EDADF15D4DE70001F12CF</string>
+				<string>E67EDAE015D4DE70001F12CF</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E67EDAC415D4DE70001F12CF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E6D57F0815F5A7E000C1ED25</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E67EDAC615D4DE70001F12CF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E675CA4B179DA691002BBB24</string>
+				<string>E6B8E1CB15F0EAD100291E27</string>
+				<string>E67EDAEB15D4DFC6001F12CF</string>
+				<string>E67EDAC915D4DE70001F12CF</string>
+				<string>F58A86A1B7790DC6DFCEAF72</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E67EDAC915D4DE70001F12CF</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>E67EDADF15D4DE70001F12CF</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>ARCHS</key>
+				<string>$(ARCHS_STANDARD_32_BIT)</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>5.0</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E67EDAE015D4DE70001F12CF</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>ARCHS</key>
+				<string>$(ARCHS_STANDARD_32_BIT)</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>5.0</string>
+				<key>OTHER_CFLAGS</key>
+				<string>-DNS_BLOCK_ASSERTIONS=1</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E67EDAE415D4DE89001F12CF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E67AE0F816F417A5000D6AB6</string>
+				<string>E67AE12E16F5727F000D6AB6</string>
+				<string>E68B6F5116B034BE00E1B3FD</string>
+				<string>E68B6F5216B034BE00E1B3FD</string>
+				<string>E68B6F5316B034BE00E1B3FD</string>
+				<string>E68B6F5416B034BE00E1B3FD</string>
+				<string>E67EDAE515D4DEA9001F12CF</string>
+				<string>E67EDAE615D4DEA9001F12CF</string>
+				<string>E67EDAF115D4E0B7001F12CF</string>
+				<string>E6F2AE2017C143D70004463E</string>
+				<string>E6F2AE2317C15AF10004463E</string>
+				<string>E66F1DB2198A4112004F08A2</string>
+				<string>E66F1DB3198A4112004F08A2</string>
+				<string>E689E8A01997F1A3004F3CAD</string>
+				<string>E689E8A11997F1A3004F3CAD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>static-library</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E67EDAE515D4DEA9001F12CF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PYData.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E67EDAE615D4DEA9001F12CF</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PYData.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E67EDAEB15D4DFC6001F12CF</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>compiled.mach-o.dylib</string>
+			<key>name</key>
+			<string>libsqlite3.dylib</string>
+			<key>path</key>
+			<string>usr/lib/libsqlite3.dylib</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>E67EDAF115D4E0B7001F12CF</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PYDataPredefination.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E689E8A01997F1A3004F3CAD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PYDataManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E689E8A11997F1A3004F3CAD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PYDataManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E689E8A21997F1A3004F3CAD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E689E8A01997F1A3004F3CAD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E689E8A31997F1A3004F3CAD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E689E8A11997F1A3004F3CAD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E68B6F5116B034BE00E1B3FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PYGlobalDataCache.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E68B6F5216B034BE00E1B3FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PYGlobalDataCache.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E68B6F5316B034BE00E1B3FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PYKeyedDb.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E68B6F5416B034BE00E1B3FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PYKeyedDb.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E68B6F5516B034BE00E1B3FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E68B6F5116B034BE00E1B3FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E68B6F5616B034BE00E1B3FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E68B6F5216B034BE00E1B3FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E68B6F5716B034BE00E1B3FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E68B6F5316B034BE00E1B3FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E68B6F5816B034BE00E1B3FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E68B6F5416B034BE00E1B3FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E6B8E1CB15F0EAD100291E27</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreLocation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreLocation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>E6D57F0415F5A7E000C1ED25</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E66F1DB5198A4112004F08A2</string>
+				<string>E6D57F1415F5A7EB00C1ED25</string>
+				<string>E689E8A31997F1A3004F3CAD</string>
+				<string>E6F2AE2417C15AF10004463E</string>
+				<string>E68B6F5616B034BE00E1B3FD</string>
+				<string>E68B6F5816B034BE00E1B3FD</string>
+				<string>E67AE12F16F5727F000D6AB6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E6D57F0515F5A7E000C1ED25</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E6D57F0915F5A7E000C1ED25</string>
+				<string>868F1AC3CF9BA278D4E96FD5</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E6D57F0615F5A7E000C1ED25</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E6D57F1315F5A7EB00C1ED25</string>
+				<string>E6D57F1715F5A7EB00C1ED25</string>
+				<string>E68B6F5516B034BE00E1B3FD</string>
+				<string>E689E8A21997F1A3004F3CAD</string>
+				<string>E66F1DB4198A4112004F08A2</string>
+				<string>E68B6F5716B034BE00E1B3FD</string>
+				<string>E6F2AE2117C143D70004463E</string>
+				<string>E67AE0F916F417A5000D6AB6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E6D57F0715F5A7E000C1ED25</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E6D57F1015F5A7E000C1ED25</string>
+			<key>buildPhases</key>
+			<array>
+				<string>13378919EDF389AE06ED1C6E</string>
+				<string>E6D57F0415F5A7E000C1ED25</string>
+				<string>E6D57F0515F5A7E000C1ED25</string>
+				<string>E6D57F0615F5A7E000C1ED25</string>
+				<string>81F048E2AE1EC595EC6F3EF4</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>PYData</string>
+			<key>productName</key>
+			<string>PYData</string>
+			<key>productReference</key>
+			<string>E6D57F0815F5A7E000C1ED25</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>E6D57F0815F5A7E000C1ED25</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPYData.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E6D57F0915F5A7E000C1ED25</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E67EDAC915D4DE70001F12CF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E6D57F0A15F5A7E000C1ED25</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E6D57F0B15F5A7E000C1ED25</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>PYData</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E6D57F0B15F5A7E000C1ED25</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E6D57F0C15F5A7E000C1ED25</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E6D57F0C15F5A7E000C1ED25</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PYData-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E6D57F1015F5A7E000C1ED25</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>E6D57F1115F5A7E000C1ED25</string>
+				<string>E6D57F1215F5A7E000C1ED25</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E6D57F1115F5A7E000C1ED25</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>FD62CB346CAE7F2CFB23F1DD</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>DSTROOT</key>
+				<string>/tmp/PYData.dst</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>PYData/PYData-Prefix.pch</string>
+				<key>HEADER_SEARCH_PATHS</key>
+				<string></string>
+				<key>OTHER_LDFLAGS</key>
+				<string>-ObjC</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>VALID_ARCHS</key>
+				<string>armv7 armv7s i386 arm64</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>E6D57F1215F5A7E000C1ED25</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>553CCF7A1AC719DE1D1B45B3</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>DSTROOT</key>
+				<string>/tmp/PYData.dst</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>PYData/PYData-Prefix.pch</string>
+				<key>HEADER_SEARCH_PATHS</key>
+				<string></string>
+				<key>OTHER_LDFLAGS</key>
+				<string>-ObjC</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>VALID_ARCHS</key>
+				<string>armv7 armv7s i386 arm64</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E6D57F1315F5A7EB00C1ED25</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E67EDAE515D4DEA9001F12CF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E6D57F1415F5A7EB00C1ED25</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E67EDAE615D4DEA9001F12CF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E6D57F1715F5A7EB00C1ED25</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E67EDAF115D4E0B7001F12CF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E6F2AE2017C143D70004463E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PYObject.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E6F2AE2117C143D70004463E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E6F2AE2017C143D70004463E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E6F2AE2317C15AF10004463E</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>PYObject.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E6F2AE2417C15AF10004463E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E6F2AE2317C15AF10004463E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F58A86A1B7790DC6DFCEAF72</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-PYData.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>FD62CB346CAE7F2CFB23F1DD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-PYData.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-PYData/Pods-PYData.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>E67EDABA15D4DE70001F12CF</string>
+</dict>
+</plist>
