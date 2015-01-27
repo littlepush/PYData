@@ -42,6 +42,7 @@
 
 #import "PYKeyedDb.h"
 #import "PYSqlStatement.h"
+#import <PYCore/PYCore.h>
 
 static NSMutableDictionary			*_gPYKeyedDBCache;
 static Class                        _keyedDbDateClass;

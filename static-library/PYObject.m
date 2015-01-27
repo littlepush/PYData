@@ -41,6 +41,7 @@
  */
 
 #import "PYObject.h"
+#import <PYCore/PYCore.h>
 
 @implementation PYObject
 

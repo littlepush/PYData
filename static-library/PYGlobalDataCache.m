@@ -41,6 +41,7 @@
  */
 
 #import "PYGlobalDataCache.h"
+#import <PYCore/PYCore.h>
 
 // The GDC init options supported key.
 NSString *const kGDCInitCacheTableName  = @"kGDCInitCacheTableName";

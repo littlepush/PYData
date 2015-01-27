@@ -7,6 +7,7 @@
 //
 
 #import "PYDataManager.h"
+#import <PYCore/PYCore.h>
 
 static PYDataManager *_gDataManager = nil;
 NSString *const kCurrentLoggedInUserId = @"kCurrentLoggedInUserId";
