@@ -78,7 +78,7 @@
 - (void)appendObject:(id<NSCoding>)value forKey:(NSString *)key tolist:(NSString *)listKey
 {
     PYSingletonLock
-    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", key];
+    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listKey];
     
     // Update list count
     int _count = [[self objectForKey:_internal_list_key] intValue];
@@ -114,7 +114,7 @@
 - (void)insertObjectAtHead:(id<NSCoding>)value forKey:(NSString *)key tolist:(NSString *)listKey
 {
     PYSingletonLock
-    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", key];
+    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listKey];
     
     // Update list count
     int _count = [[self objectForKey:_internal_list_key] intValue];
@@ -156,7 +156,7 @@
         return;
     }
     
-    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", key];
+    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listKey];
     
     // Update list count
     int _count = [[self objectForKey:_internal_list_key] intValue];
@@ -185,7 +185,7 @@
 - (void)insertObject:(id<NSCoding>)value forKey:(NSString *)key after:(NSString *)objKey tolist:(NSString *)listKey
 {
     PYSingletonLock
-    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", key];
+    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listKey];
     
     // Update list count
     int _count = [[self objectForKey:_internal_list_key] intValue];
@@ -214,7 +214,7 @@
 - (void)removeObject:(NSString *)key oflist:(NSString *)listkey
 {
     PYSingletonLock
-    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", key];
+    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listkey];
     
     // Update list count
     int _count = [[self objectForKey:_internal_list_key] intValue];
