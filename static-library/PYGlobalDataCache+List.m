@@ -64,6 +64,13 @@
     [self setObject:@"" forKey:_list_last_key];
     PYSingletonUnLock
 }
+- (NSInteger)countOfList:(NSString *)key
+{
+    PYSingletonLock
+    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", key];
+    return [[self objectForKey:_internal_list_key] integerValue];
+    PYSingletonUnLock
+}
 /*!
  append new object to the end of the list.
  the object will be update to the cache.

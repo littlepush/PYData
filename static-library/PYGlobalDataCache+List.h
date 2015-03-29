@@ -50,6 +50,11 @@
  if the `key` is existed, just return.
  */
 - (void)createListForKey:(NSString *)key;
+
+/*!
+ Get the list count
+ */
+- (NSInteger)countOfList:(NSString *)key;
 /*!
  append new object to the end of the list.
  the object will be inserted to the cache.
