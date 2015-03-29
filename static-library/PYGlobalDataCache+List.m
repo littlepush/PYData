@@ -220,6 +220,10 @@
     PYSingletonLock
     NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listkey];
     
+    // Check if list contains the key
+    NSString *_node_prev_key = [_internal_list_key stringByAppendingFormat:@"^prev^%@", key];
+    if ( [self containsKey:_node_prev_key] == NO ) return;
+    
     // Update list count
     int _count = [[self objectForKey:_internal_list_key] intValue];
     _count -= 1;
