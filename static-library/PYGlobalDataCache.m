@@ -41,7 +41,6 @@
  */
 
 #import "PYGlobalDataCache.h"
-#import <PYCore/PYCore.h>
 
 // The GDC init options supported key.
 NSString *const kGDCInitCacheTableName  = @"kGDCInitCacheTableName";
@@ -77,13 +76,6 @@ static NSMutableDictionary		*_gdcDict;
 #endif
 }
 
-+ (void)initializeSqliteForMultithreadSupport
-{
-    // Initialize the database for multiple thread usage.
-    if ( sqlite3_config(SQLITE_CONFIG_SERIALIZED) != SQLITE_OK ) {
-        [self raiseExceptionWithMessage:@"Failed to set the sqlite as thread-safe."];
-    }
-}
 + (NSError *)initializeSqliteForMultipleThread
 {
     return [PYGlobalDataCache initializeSqliteForMultipleThreadAndForceToSet:NO];
@@ -462,6 +454,11 @@ static NSMutableDictionary		*_gdcDict;
         _lock.name = [NSString stringWithFormat:@"com.%@.lock", identify];
 	}
 	return self;
+}
+
+- (NSArray *)keysWithPattern:(NSString *)pattern
+{
+    return [_innerDb keysLike:pattern];
 }
 
 #pragma mark --

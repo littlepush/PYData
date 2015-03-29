@@ -84,6 +84,13 @@
 
 @interface PYObject : NSObject <PYObject>
 
+/*! set the parse key for object id, default is "id" */
++ (void)setKeyForObjectId:(NSString *)key;
+/*! set the parse key for name, default is "name" */
++ (void)setKeyForName:(NSString *)key;
+/*! set the parse key for update time, default is "updatetime" for UTC, "updatedAt" for nodejs */
++ (void)setKeyForUpdateTime:(NSString *)key;
+
 /*! @brief object id(id in JSON dictionary), unique with the same type. */
 @property (nonatomic, copy)     NSString                *objectId;
 /*! @brief update time of the object(updatetime in JSON dictionary) */
@@ -131,6 +138,27 @@
     key identifier of the value.
  */
 - (PYObject *)PYObjectForKey:(NSString *)key;
+/*!
+ append new object to the end of the list.
+ the object will be inserted to the cache.
+ */
+- (void)appendPYObject:(PYObject *)value forKey:(NSString *)key tolist:(NSString *)listKey;
+/*!
+ insert new object at the head of the list.
+ */
+- (void)insertPYObjectAtHead:(PYObject *)value forKey:(NSString *)key tolist:(NSString *)listKey;
+/*!
+ insert the object before specified object, if 'objKey' is empty, means insert a root node.
+ */
+- (void)insertPYObject:(PYObject *)value forKey:(NSString *)key before:(NSString *)objKey tolist:(NSString *)listKey;
+/*!
+ insert the object after specified object, if 'objKey' is empty, means append to the last.
+ */
+- (void)insertPYObject:(PYObject *)value forKey:(NSString *)key after:(NSString *)objKey tolist:(NSString *)listKey;
+/*!
+ get all objects in the list.
+ */
+- (NSArray *)listPYObjectsForKey:(NSString *)key;
 
 @end
 

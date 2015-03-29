@@ -10,6 +10,8 @@
 		868F1AC3CF9BA278D4E96FD5 /* libPods-PYData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F58A86A1B7790DC6DFCEAF72 /* libPods-PYData.a */; };
 		E66F1DB4198A4112004F08A2 /* PYKernel+PYData.h in Headers */ = {isa = PBXBuildFile; fileRef = E66F1DB2198A4112004F08A2 /* PYKernel+PYData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E66F1DB5198A4112004F08A2 /* PYKernel+PYData.m in Sources */ = {isa = PBXBuildFile; fileRef = E66F1DB3198A4112004F08A2 /* PYKernel+PYData.m */; };
+		E6722F581AC84D09005DF296 /* PYGlobalDataCache+List.h in Headers */ = {isa = PBXBuildFile; fileRef = E6722F561AC84D09005DF296 /* PYGlobalDataCache+List.h */; };
+		E6722F591AC84D09005DF296 /* PYGlobalDataCache+List.m in Sources */ = {isa = PBXBuildFile; fileRef = E6722F571AC84D09005DF296 /* PYGlobalDataCache+List.m */; };
 		E67AE0F916F417A5000D6AB6 /* PYSqlStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = E67AE0F816F417A5000D6AB6 /* PYSqlStatement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E67AE12F16F5727F000D6AB6 /* PYSqlStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = E67AE12E16F5727F000D6AB6 /* PYSqlStatement.m */; };
 		E689E8A21997F1A3004F3CAD /* PYDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E689E8A01997F1A3004F3CAD /* PYDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +32,8 @@
 		553CCF7A1AC719DE1D1B45B3 /* Pods-PYData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PYData.release.xcconfig"; path = "Pods/Target Support Files/Pods-PYData/Pods-PYData.release.xcconfig"; sourceTree = "<group>"; };
 		E66F1DB2198A4112004F08A2 /* PYKernel+PYData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PYKernel+PYData.h"; sourceTree = "<group>"; };
 		E66F1DB3198A4112004F08A2 /* PYKernel+PYData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PYKernel+PYData.m"; sourceTree = "<group>"; };
+		E6722F561AC84D09005DF296 /* PYGlobalDataCache+List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PYGlobalDataCache+List.h"; sourceTree = "<group>"; };
+		E6722F571AC84D09005DF296 /* PYGlobalDataCache+List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PYGlobalDataCache+List.m"; sourceTree = "<group>"; };
 		E675CA4B179DA691002BBB24 /* PYCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PYCore.framework; path = System/Library/Frameworks/PYCore.framework; sourceTree = SDKROOT; };
 		E67AE0F816F417A5000D6AB6 /* PYSqlStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSqlStatement.h; sourceTree = "<group>"; };
 		E67AE12E16F5727F000D6AB6 /* PYSqlStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSqlStatement.m; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				E67AE12E16F5727F000D6AB6 /* PYSqlStatement.m */,
 				E68B6F5116B034BE00E1B3FD /* PYGlobalDataCache.h */,
 				E68B6F5216B034BE00E1B3FD /* PYGlobalDataCache.m */,
+				E6722F561AC84D09005DF296 /* PYGlobalDataCache+List.h */,
+				E6722F571AC84D09005DF296 /* PYGlobalDataCache+List.m */,
 				E68B6F5316B034BE00E1B3FD /* PYKeyedDb.h */,
 				E68B6F5416B034BE00E1B3FD /* PYKeyedDb.m */,
 				E67EDAE515D4DEA9001F12CF /* PYData.h */,
@@ -158,6 +164,7 @@
 				E66F1DB4198A4112004F08A2 /* PYKernel+PYData.h in Headers */,
 				E68B6F5716B034BE00E1B3FD /* PYKeyedDb.h in Headers */,
 				E6F2AE2117C143D70004463E /* PYObject.h in Headers */,
+				E6722F581AC84D09005DF296 /* PYGlobalDataCache+List.h in Headers */,
 				E67AE0F916F417A5000D6AB6 /* PYSqlStatement.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +258,7 @@
 			files = (
 				E66F1DB5198A4112004F08A2 /* PYKernel+PYData.m in Sources */,
 				E6D57F1415F5A7EB00C1ED25 /* PYData.m in Sources */,
+				E6722F591AC84D09005DF296 /* PYGlobalDataCache+List.m in Sources */,
 				E689E8A31997F1A3004F3CAD /* PYDataManager.m in Sources */,
 				E6F2AE2417C15AF10004463E /* PYObject.m in Sources */,
 				E68B6F5616B034BE00E1B3FD /* PYGlobalDataCache.m in Sources */,

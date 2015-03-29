@@ -42,7 +42,6 @@
 
 #import "PYKeyedDb.h"
 #import "PYSqlStatement.h"
-#import <PYCore/PYCore.h>
 
 static NSMutableDictionary			*_gPYKeyedDBCache;
 static Class                        _keyedDbDateClass;
@@ -205,6 +204,16 @@ static Class                        _keyedDbDateClass;
             NSLog(@"Failed to initialize the select key statement: %s", sqlite3_errmsg(_innerDb));
             return NO;
         }
+        
+        // Search keys
+        NSString *_searchKeySql = [NSString stringWithFormat:
+                                   @"SELECT dbKey FROM %@ WHERE dbKey LIKE \'?\'", cacheTbname];
+        _searchKeys = [PYSqlStatement sqlStatementWithSQL:_searchKeySql];
+        if ( sqlite3_prepare_v2(_innerDb, _searchKeySql.UTF8String, -1,
+                                &_searchKeys->sqlstmt, NULL) != SQLITE_OK ) {
+            NSLog(@"Failed to initialize the search key statement: %s", sqlite3_errmsg(_innerDb));
+            return NO;
+        }
 		return YES;
 	} else {
         NSLog(@"Failed to open sqlite at path: %@, error: %s", dbPath, sqlite3_errmsg(_innerDb));
@@ -342,6 +351,20 @@ static Class                        _keyedDbDateClass;
         return _row;
     }
 	return nil;
+    PYSingletonUnLock
+}
+
+- (NSArray *)keysLike:(NSString *)pattern
+{
+    PYSingletonLock
+    [_searchKeys resetBinding];
+    [_searchKeys bindInOrderText:pattern];
+    NSMutableArray *_result = [NSMutableArray array];
+    while ( sqlite3_step(_searchKeys.statement) == SQLITE_ROW ) {
+        [_searchKeys prepareForReading];
+        [_result addObject:[_searchKeys getInOrderText]];
+    }
+    return _result;
     PYSingletonUnLock
 }
 

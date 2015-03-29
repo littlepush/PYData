@@ -41,7 +41,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <PYCore/PYCore.h>
+#import "PYCore.h"
 #import "PYKeyedDb.h"
 
 // The GDC init options supported key.
@@ -109,11 +109,6 @@ enum {
 // time and use more memory than usual.
 @property (nonatomic, readonly)     NSArray         *allKeys;
 
-// The [initialize] method will force to set the thread-safe flag
-// if set the [PY_FORCE_THREASAFE] when compilation.
-// Make the sqlite to support multiple thread.
-// Depecated in v0.9
-+ (void)initializeSqliteForMultithreadSupport DEPRECATED_ATTRIBUTE;
 // Now use this method to change the config.
 // When failed to do so, return an error.
 // By default, the method will not force to set the serialized flat,
@@ -145,6 +140,9 @@ enum {
 - (BOOL)containsKey:(NSString *)key;
 - (BOOL)isObjectForKey:(NSString *)key expiredFrom:(id<PYDate>)date;
 - (BOOL)isObjectForKey:(NSString *)key notSameInDate:(id<PYDate>)date;
+
+// Get all keys use SQL LIKE Statement
+- (NSArray *)keysWithPattern:(NSString *)pattern;
 
 // Clear all cache data.
 - (void)clearAllCacheData:(PYActionDone)done;

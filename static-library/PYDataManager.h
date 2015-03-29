@@ -29,6 +29,7 @@ extern NSString *const PYDataManagerUserLoginStatusChangedNotification;
 // Switch the user and the user cache
 - (void)switchUser:(NSString *)userId;
 
+- (BOOL)isUserLoggedIn;
 - (void)logout;
 
 // Readonly

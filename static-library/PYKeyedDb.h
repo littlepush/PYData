@@ -43,7 +43,7 @@
 #import <Foundation/Foundation.h>
 #import "PYDataPredefination.h"
 #import "PYSqlStatement.h"
-#import <PYCore/PYDate.h>
+#import "PYcore.h"
 
 #define		kKeyedDBTableName		@"_PYkeyedCache"
 
@@ -68,6 +68,7 @@
     PYSqlStatement      *_checkStat;
     
     PYSqlStatement      *_selectKeys;
+    PYSqlStatement      *_searchKeys;
     
     NSString            *_cacheTbName;
 }
@@ -91,6 +92,8 @@
 
 // Get the value
 - (PYKeyedDbRow *)valueForKey:(NSString *)key;
+// Search for keys
+- (NSArray *)keysLike:(NSString *)pattern;
 
 @property (nonatomic, readonly) NSArray     *allKeys;
 

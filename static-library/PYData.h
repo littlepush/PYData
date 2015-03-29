@@ -45,6 +45,7 @@
 #define USING_PYDATA__
 
 #import "PYGlobalDataCache.h"
+#import "PYGlobalDataCache+List.h"
 #import "PYKeyedDb.h"
 #import "PYObject.h"
 #import "PYKernel+PYData.h"

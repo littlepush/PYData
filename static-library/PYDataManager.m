@@ -7,7 +7,7 @@
 //
 
 #import "PYDataManager.h"
-#import <PYCore/PYCore.h>
+#import "PYCore.h"
 
 static PYDataManager *_gDataManager = nil;
 NSString *const kCurrentLoggedInUserId = @"kCurrentLoggedInUserId";
@@ -66,6 +66,12 @@ PYSingletonDefaultImplementation
     PYSingletonUnLock
 }
 
+- (BOOL)isUserLoggedIn
+{
+    PYSingletonLock
+    return (![_currentUserId isEqualToString:kDefaultUserId]);
+    PYSingletonUnLock
+}
 - (void)logout
 {
     PYSingletonLock

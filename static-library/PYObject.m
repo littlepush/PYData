@@ -41,9 +41,27 @@
  */
 
 #import "PYObject.h"
-#import <PYCore/PYCore.h>
+#import "PYCore.h"
+#import "PYGlobalDataCache+List.h"
+
+static NSString *_keyObjectId = @"id";
+static NSString *_keyName = @"name";
+static NSString *_keyUpdateTime = @"updateAt";
 
 @implementation PYObject
+
++ (void)setKeyForObjectId:(NSString *)key
+{
+    _keyObjectId = [key copy];
+}
++ (void)setKeyForName:(NSString *)key
+{
+    _keyName = [key copy];
+}
++ (void)setKeyForUpdateTime:(NSString *)key
+{
+    _keyUpdateTime = [key copy];
+}
 
 @synthesize objectId, updateTime, name, type;
 @dynamic objectIdentify;
@@ -98,15 +116,23 @@
 
 - (void)objectFromJsonDict:(NSDictionary *)jsonDict
 {
-    self.objectId   = PYIntToString([jsonDict tryIntObjectForKey:@"id" withDefaultValue:0]);
-    if ( [jsonDict objectForKey:@"updatetime"] ) {
-        self.updateTime = [PYDate dateWithDate:[jsonDict utcDateObjectForKey:@"updatetime"]];
-    } else if ( [jsonDict objectForKey:@"updatedAt"] ) {
+    self.objectId = [jsonDict stringObjectForKey:_keyObjectId withDefaultValue:@""];
+    if ( [self.objectId length] == 0 ) {
+        self.objectId = PYIntToString([jsonDict tryIntObjectForKey:_keyObjectId withDefaultValue:0]);
+    }
+    
+    if ( [jsonDict objectForKey:@"updatedAt"] ) {
         self.updateTime = [PYDate dateWithDate:[jsonDict jsDateObjectForKey:@"updatedAt"]];
     } else {
-        self.updateTime = [PYDate dateWithDate:[jsonDict snsDateObjectForKey:@"updatetime"]];
+        NSDate *_time = [jsonDict utcDateObjectForKey:_keyUpdateTime];
+        if ( _time.timeIntervalSince1970 == 0.f ) {
+            _time = [jsonDict snsDateObjectForKey:_keyUpdateTime];
+            if ( _time.timeIntervalSince1970 == 0.f ) {
+                _time = [jsonDict mDateObjectForKey:_keyUpdateTime];
+            }
+        }
     }
-    self.name       = [jsonDict stringObjectForKey:@"name" withDefaultValue:@""];
+    self.name       = [jsonDict stringObjectForKey:_keyName withDefaultValue:@""];
     self.type       = NSStringFromClass([self class]);
 }
 
@@ -114,10 +140,10 @@
 {
     // Return an empty dictionary.
     return @{
-             @"id"              :([self.objectId length] ? self.objectId : @""),
-             @"name"            :([self.name length] ? self.name : @""),
-             @"type"            :([self.type length] ? self.type : @""),
-             @"updatetime"      :PYIntToString((int)[self.updateTime timestamp])
+             _keyObjectId           :([self.objectId length] ? self.objectId : @""),
+             _keyName               :([self.name length] ? self.name : @""),
+             @"type"                :([self.type length] ? self.type : @""),
+             _keyUpdateTime         :PYIntToString((int)[self.updateTime timestamp])
              };
 }
 
@@ -150,6 +176,58 @@
     } @catch( NSException *ex ) {
         return nil;
     }
+}
+/*!
+ append new object to the end of the list.
+ the object will be inserted to the cache.
+ */
+- (void)appendPYObject:(PYObject *)value forKey:(NSString *)key tolist:(NSString *)listKey
+{
+    [self appendObject:[value objectToJsonDict] forKey:key tolist:listKey];
+}
+/*!
+ insert new object at the head of the list.
+ */
+- (void)insertPYObjectAtHead:(PYObject *)value forKey:(NSString *)key tolist:(NSString *)listKey
+{
+    [self insertObjectAtHead:[value objectToJsonDict] forKey:key tolist:listKey];
+}
+/*!
+ insert the object before specified object, if 'objKey' is empty, means insert a root node.
+ */
+- (void)insertPYObject:(PYObject *)value forKey:(NSString *)key before:(NSString *)objKey tolist:(NSString *)listKey
+{
+    [self insertObject:[value objectToJsonDict] forKey:key before:objKey tolist:listKey];
+}
+/*!
+ insert the object after specified object, if 'objKey' is empty, means append to the last.
+ */
+- (void)insertPYObject:(PYObject *)value forKey:(NSString *)key after:(NSString *)objKey tolist:(NSString *)listKey
+{
+    [self insertObject:[value objectToJsonDict] forKey:key after:objKey tolist:listKey];
+}
+/*!
+ get all objects in the list.
+ */
+- (NSArray *)listPYObjectsForKey:(NSString *)key
+{
+    NSArray *_objectList = [self listObjectsForKey:key];
+    NSMutableArray *_pyobjList = [NSMutableArray array];
+    for ( NSDictionary *_result in _objectList ) {
+        if ( [_result isKindOfClass:[NSDictionary class]] == NO ) continue;
+        NSString *_type = [_result stringObjectForKey:@"type" withDefaultValue:@""];
+        if ( [_type length] == 0 ) continue;    // not support type
+        Class _cls = NSClassFromString(_type);
+        if ( _cls == NULL ) continue;           // cannot find the object's type
+        PYObject *_object = [_cls new];
+        @try {
+            [_object objectFromJsonDict:_result];
+            [_pyobjList addObject:_object];
+        } @catch( NSException *ex ) {
+            continue;
+        }
+    }
+    return _pyobjList;
 }
 
 @end
