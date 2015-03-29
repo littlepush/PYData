@@ -106,6 +106,8 @@
         NSString *_old_next_key = [_internal_list_key stringByAppendingFormat:@"^next^%@", _lastNodeKey];
         [self setObject:key forKey:_old_next_key];
     }
+    // Update last key
+    [self setObject:key forKey:_list_last_key];
     PYSingletonUnLock
 }
 /*!
@@ -143,6 +145,8 @@
         NSString *_old_first_key = [_internal_list_key stringByAppendingFormat:@"^prev^%@", _firstNodeKey];
         [self setObject:key forKey:_old_first_key];
     }
+    // Update first key
+    [self setObject:key forKey:_list_first_key];
     PYSingletonUnLock
 }
 /*!
