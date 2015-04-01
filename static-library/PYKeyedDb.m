@@ -311,13 +311,14 @@ static Class                        _keyedDbDateClass;
     PYSingletonUnLock
 }
 
-- (void)deleteValueForKey:(NSString *)key
+- (int)deleteValueForKey:(NSString *)key
 {
 	// Delete
     PYSingletonLock
     [_deleteStat resetBinding];
     [_deleteStat bindInOrderText:key];
     sqlite3_step(_deleteStat.statement);
+    return sqlite3_changes(_innerDb);
     PYSingletonUnLock
 }
 

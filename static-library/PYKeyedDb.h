@@ -84,7 +84,7 @@
 - (BOOL)endBatchOperation;
 - (BOOL)addValue:(NSData *)formatedValue forKey:(NSString *)key expireOn:(id<PYDate>)expire;
 - (BOOL)updateValue:(NSData *)formatedValue forKey:(NSString *)key expireOn:(id<PYDate>)expire;
-- (void)deleteValueForKey:(NSString *)key;
+- (int)deleteValueForKey:(NSString *)key;
 
 - (BOOL)containsKey:(NSString *)key;
 

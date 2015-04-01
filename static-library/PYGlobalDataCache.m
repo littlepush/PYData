@@ -201,6 +201,13 @@ static NSMutableDictionary		*_gdcDict;
         // Clean the cache
         [self _checkCacheSizeAndClean];
         
+        // Update the update logical. First we delete the old key if it existed
+        // then we do an insert statement to set the new value.
+        // So we can use batch operation
+        _allObjectCount -= [_innerDb deleteValueForKey:key];
+        [_innerDb addValue:_dbValue forKey:key expireOn:expire];
+        _allObjectCount += 1;
+        /*
         if ( [_innerDb containsKey:key] ) {
             // update
             [_innerDb updateValue:_dbValue forKey:key expireOn:expire];
@@ -208,6 +215,7 @@ static NSMutableDictionary		*_gdcDict;
             [_innerDb addValue:_dbValue forKey:key expireOn:expire];
             _allObjectCount += 1;
         }
+        */
     } else {
         if ( [_innerDb containsKey:key] ) {
             // delete
