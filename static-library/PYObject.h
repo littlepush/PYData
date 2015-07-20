@@ -47,16 +47,6 @@
 @protocol PYObject <NSObject>
 
 @required
-/*!
- @brief  Generate the content identify for GDC of a specified id.
- @discussion When we do not know the object but only get the item id, we
- use this method to generate the content identify and then fetch
- the item from GDC.
- @param objectId
-    The object id must be the string type.
- @return Return the string identifier.
- */
-+ (NSString *)identifyOfId:(NSString *)objectId;
 
 /*!
  @brief Convert the JSON dictionary to our base bean object.
@@ -84,6 +74,16 @@
 
 @interface PYObject : NSObject <PYObject>
 
+/*!
+ @brief  Generate the content identify for GDC of a specified id.
+ @discussion When we do not know the object but only get the item id, we
+ use this method to generate the content identify and then fetch
+ the item from GDC.
+ @param objectId
+ The object id must be the string type.
+ @return Return the string identifier.
+ */
++ (NSString *)identifyOfId:(NSString *)objectId;
 /*! set the parse key for object id, default is "id" */
 + (void)setKeyForObjectId:(NSString *)key;
 /*! set the parse key for name, default is "name" */
