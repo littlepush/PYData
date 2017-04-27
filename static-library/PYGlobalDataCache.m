@@ -41,6 +41,7 @@
  */
 
 #import "PYGlobalDataCache.h"
+#include <sqlite3.h>
 #import "PYDataPredefination.h"
 
 // The GDC init options supported key.

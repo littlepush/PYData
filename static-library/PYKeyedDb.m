@@ -41,6 +41,7 @@
  */
 
 #import "PYKeyedDb.h"
+#include <sqlite3.h>
 #import "PYDataPredefination.h"
 
 static NSMutableDictionary			*_gPYKeyedDBCache;

@@ -43,8 +43,6 @@
 #ifndef PYData_PYDataPredefination_h
 #define PYData_PYDataPredefination_h
 
-#include <sqlite3.h>
-
 #define SQLITE_STMT(st)				sqlite3_stmt *st;
 #define SQLITE_STMT_FORBIND(st)		sqlite3_stmt *st; int _i##st = 1;
 #define SQLITE_ENDSTMT(st)			sqlite3_finalize(st)

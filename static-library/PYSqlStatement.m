@@ -41,6 +41,7 @@
  */
 
 #import "PYSqlStatement.h"
+#include <sqlite3.h>
 #import "PYDataPredefination.h"
 
 @interface PYSqlStatement()
