@@ -41,10 +41,21 @@
  */
 
 #import "PYSqlStatement.h"
+#import "PYDataPredefination.h"
+
+@interface PYSqlStatement()
+{
+@public
+    sqlite3_stmt			*sqlstmt;
+@private
+    int						bindCount;
+    NSString				*sqlString;
+    //BOOL					inited;
+}
+@end
 
 @implementation PYSqlStatement
 
-@synthesize statement = sqlstmt;
 @synthesize sqlString = sqlString;
 @synthesize name;
 
@@ -79,7 +90,19 @@
 	[self finalizeStatement];
 }
 
-- (void)finalizeStatement 
+/* Prepare the statement */
+- (BOOL)prepareStatementWithDB:(id)db
+{
+    sqlite3* _pdb = (__bridge sqlite3 *)(db);
+    if (sqlite3_prepare_v2(_pdb, self->sqlString.UTF8String, -1,
+                           &self->sqlstmt, NULL) != SQLITE_OK) {
+        NSLog(@"Failed to initialize the statement: %s", sqlite3_errmsg(_pdb));
+        return NO;
+    }
+    return YES;
+}
+
+- (void)finalizeStatement
 {
 	SQLITE_ENDSTMT(sqlstmt);
 	bindCount = 1;
@@ -94,6 +117,11 @@
 - (void)prepareForReading
 {
 	bindCount = 0;
+}
+
+- (NSInteger)step
+{
+    return sqlite3_step(self->sqlstmt);
 }
 
 /* Binding */

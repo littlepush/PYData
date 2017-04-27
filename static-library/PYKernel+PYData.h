@@ -41,7 +41,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "PYCore.h"
+#import <PYCore/PYCore.h>
 
 @interface PYKernel (PYData)
 

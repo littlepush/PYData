@@ -41,7 +41,7 @@
  */
 
 #import "PYKeyedDb.h"
-#import "PYSqlStatement.h"
+#import "PYDataPredefination.h"
 
 static NSMutableDictionary			*_gPYKeyedDBCache;
 static Class                        _keyedDbDateClass;
@@ -52,6 +52,22 @@ static Class                        _keyedDbDateClass;
 @end
 
 @interface PYKeyedDb ()
+{
+    sqlite3				*_innerDb;
+    NSString            *_dbPath;
+    
+    PYSqlStatement      *_insertStat;
+    PYSqlStatement      *_updateStat;
+    PYSqlStatement      *_deleteStat;
+    PYSqlStatement      *_countStat;
+    PYSqlStatement      *_selectStat;
+    PYSqlStatement      *_checkStat;
+    
+    PYSqlStatement      *_selectKeys;
+    PYSqlStatement      *_searchKeys;
+    
+    NSString            *_cacheTbName;
+}
 
 - (BOOL)initializeDbWithPath:(NSString *)dbPath cacheTableName:(NSString *)cacheTbname;
 - (BOOL)initializeDbWithPath:(NSString *)dbPath;
@@ -139,81 +155,49 @@ static Class                        _keyedDbDateClass;
         NSString *_insertSql = [NSString stringWithFormat:
                                 @"INSERT INTO %@ VALUES(?, ?, ?);", cacheTbname];
         _insertStat = [PYSqlStatement sqlStatementWithSQL:_insertSql];
-        if (sqlite3_prepare_v2(_innerDb, _insertSql.UTF8String, -1,
-                               &_insertStat->sqlstmt, NULL) != SQLITE_OK) {
-            NSLog(@"Failed to initialize the insert statement: %s", sqlite3_errmsg(_innerDb));
-            return NO;
-        }
+        if ( ![_insertStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
 
         // Update
         NSString *_updateSql = [NSString stringWithFormat:
                                 @"UPDATE %@ set dbValue=?, dbExpire=? WHERE dbKey=?", cacheTbname];
         _updateStat = [PYSqlStatement sqlStatementWithSQL:_updateSql];
-        if (sqlite3_prepare_v2(_innerDb, _updateSql.UTF8String, -1,
-                               &_updateStat->sqlstmt, NULL) != SQLITE_OK) {
-            NSLog(@"Failed to initialize the update statement: %s", sqlite3_errmsg(_innerDb));
-            return NO;
-        }
+        if ( ![_updateStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
         
         // Delete
         NSString *_deleteSql = [NSString stringWithFormat:
                                 @"DELETE FROM %@ WHERE dbKey=?", cacheTbname];
         _deleteStat = [PYSqlStatement sqlStatementWithSQL:_deleteSql];
-        if (sqlite3_prepare_v2(_innerDb, _deleteSql.UTF8String, -1,
-                               &_deleteStat->sqlstmt, NULL) != SQLITE_OK) {
-            NSLog(@"Failed to initialize the delete statement: %s", sqlite3_errmsg(_innerDb));
-            return NO;
-        }
+        if ( ![_deleteStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
         
         // Check
         NSString *_checkSql = [NSString stringWithFormat:
                                @"SELECT dbKey FROM %@ WHERE dbKey=?", cacheTbname];
         _checkStat = [PYSqlStatement sqlStatementWithSQL:_checkSql];
-        if (sqlite3_prepare_v2(_innerDb, _checkSql.UTF8String, -1,
-                               &_checkStat->sqlstmt, NULL) != SQLITE_OK) {
-            NSLog(@"Failed to initialize the check statement: %s", sqlite3_errmsg(_innerDb));
-            return NO;
-        }
+        if ( ![_checkStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
         
         // Select
         NSString *_selectSql = [NSString stringWithFormat:
                                 @"SELECT dbValue, dbExpire FROM %@ WHERE dbKey=?", cacheTbname];
         _selectStat = [PYSqlStatement sqlStatementWithSQL:_selectSql];
-        if (sqlite3_prepare_v2(_innerDb, _selectSql.UTF8String, -1,
-                               &_selectStat->sqlstmt, NULL) != SQLITE_OK) {
-            NSLog(@"Failed to initialize the select statement: %s", sqlite3_errmsg(_innerDb));
-            return NO;
-        }
+        if ( ![_selectStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
         
         // Count
         NSString *_countSql = [NSString stringWithFormat:
                                @"SELECT COUNT(dbKey) FROM %@", cacheTbname];
         _countStat = [PYSqlStatement sqlStatementWithSQL:_countSql];
-        if (sqlite3_prepare_v2(_innerDb, _countSql.UTF8String, -1,
-                               &_countStat->sqlstmt, NULL) != SQLITE_OK) {
-            NSLog(@"Failed to initialize the count statement: %s", sqlite3_errmsg(_innerDb));
-            return NO;
-        }
+        if ( ![_countStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
         
         // Select Keys
         NSString *_selectKeySql = [NSString stringWithFormat:
                                    @"SELECT dbKey FROM %@", cacheTbname];
         _selectKeys = [PYSqlStatement sqlStatementWithSQL:_selectKeySql];
-        if ( sqlite3_prepare_v2(_innerDb, _selectKeySql.UTF8String, -1,
-                                &_selectKeys->sqlstmt, NULL) != SQLITE_OK ) {
-            NSLog(@"Failed to initialize the select key statement: %s", sqlite3_errmsg(_innerDb));
-            return NO;
-        }
+        if ( ![_selectKeys prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
         
         // Search keys
         NSString *_searchKeySql = [NSString stringWithFormat:
                                    @"SELECT dbKey FROM %@ WHERE dbKey LIKE \'?\'", cacheTbname];
         _searchKeys = [PYSqlStatement sqlStatementWithSQL:_searchKeySql];
-        if ( sqlite3_prepare_v2(_innerDb, _searchKeySql.UTF8String, -1,
-                                &_searchKeys->sqlstmt, NULL) != SQLITE_OK ) {
-            NSLog(@"Failed to initialize the search key statement: %s", sqlite3_errmsg(_innerDb));
-            return NO;
-        }
+        if ( ![_searchKeys prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
 		return YES;
 	} else {
         NSLog(@"Failed to open sqlite at path: %@, error: %s", dbPath, sqlite3_errmsg(_innerDb));
@@ -289,7 +273,8 @@ static Class                        _keyedDbDateClass;
     [_insertStat bindInOrderText:key];
     [_insertStat bindInOrderData:formatedValue];
     [_insertStat bindInOrderInt:(int)expire.timestamp];
-    if (sqlite3_step(_insertStat.statement) == SQLITE_DONE ) {
+    if ( [_insertStat step] == SQLITE_DONE ) {
+//    if (sqlite3_step(_insertStat.statement) == SQLITE_DONE ) {
         _statue = YES;
     }
 	return _statue;
@@ -304,7 +289,8 @@ static Class                        _keyedDbDateClass;
     [_updateStat bindInOrderData:formatedValue];
     [_updateStat bindInOrderInt:(int)expire.timestamp];
     [_updateStat bindInOrderText:key];
-    if (sqlite3_step(_updateStat.statement) == SQLITE_DONE ) {
+    if ( [_updateStat step] == SQLITE_DONE ) {
+//    if (sqlite3_step(_updateStat.statement) == SQLITE_DONE ) {
         _statue = YES;
     }
 	return _statue;
@@ -317,7 +303,8 @@ static Class                        _keyedDbDateClass;
     PYSingletonLock
     [_deleteStat resetBinding];
     [_deleteStat bindInOrderText:key];
-    sqlite3_step(_deleteStat.statement);
+//    sqlite3_step(_deleteStat.statement);
+    [_deleteStat step];
     return sqlite3_changes(_innerDb);
     PYSingletonUnLock
 }
@@ -329,7 +316,8 @@ static Class                        _keyedDbDateClass;
     [_checkStat resetBinding];
 	BOOL _statue = NO;
     [_checkStat bindInOrderText:key];
-    if (sqlite3_step(_checkStat.statement) == SQLITE_ROW ) {
+    if ( [_checkStat step] == SQLITE_ROW ) {
+//    if (sqlite3_step(_checkStat.statement) == SQLITE_ROW ) {
         _statue = YES;
     }
 	return _statue;
@@ -341,7 +329,8 @@ static Class                        _keyedDbDateClass;
     PYSingletonLock
     [_selectStat resetBinding];
     [_selectStat bindInOrderText:key];
-    if (sqlite3_step(_selectStat.statement) == SQLITE_ROW )
+    if ( [_selectStat step] == SQLITE_ROW )
+//    if (sqlite3_step(_selectStat.statement) == SQLITE_ROW )
     {
         [_selectStat prepareForReading];
         NSData *_value = [_selectStat getInOrderData];
@@ -361,7 +350,8 @@ static Class                        _keyedDbDateClass;
     [_searchKeys resetBinding];
     [_searchKeys bindInOrderText:pattern];
     NSMutableArray *_result = [NSMutableArray array];
-    while ( sqlite3_step(_searchKeys.statement) == SQLITE_ROW ) {
+    while ( [_searchKeys step] == SQLITE_ROW ) {
+//    while ( sqlite3_step(_searchKeys.statement) == SQLITE_ROW ) {
         [_searchKeys prepareForReading];
         [_result addObject:[_searchKeys getInOrderText]];
     }
@@ -373,7 +363,8 @@ static Class                        _keyedDbDateClass;
 {
     PYSingletonLock
     [_countStat resetBinding];
-    if (sqlite3_step(_countStat.statement) == SQLITE_ROW )
+    if ( [_countStat step] == SQLITE_ROW )
+//    if (sqlite3_step(_countStat.statement) == SQLITE_ROW )
     {
         [_countStat prepareForReading];
         return [_countStat getInOrderInt];
@@ -388,7 +379,8 @@ static Class                        _keyedDbDateClass;
     PYSingletonLock
     [_selectKeys resetBinding];
     NSMutableArray *_result = [NSMutableArray array];
-    while ( sqlite3_step(_selectKeys.statement) == SQLITE_ROW ) {
+    while ( [_selectKeys step] == SQLITE_ROW ) {
+//    while ( sqlite3_step(_selectKeys.statement) == SQLITE_ROW ) {
         [_selectKeys prepareForReading];
         [_result addObject:[_selectKeys getInOrderText]];
     }

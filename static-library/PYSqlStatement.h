@@ -41,26 +41,18 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "PYDataPredefination.h"
 
 @interface PYSqlStatement : NSObject
-{
-	@public
-	sqlite3_stmt			*sqlstmt;
-	@private
-	int						bindCount;
-	NSString				*sqlString;
-	//BOOL					inited;
-}
 
-/* get the internal statement object, readonly */
-@property (nonatomic, readonly) sqlite3_stmt		*statement;
 @property (nonatomic, copy)		NSString			*sqlString;
 @property (nonatomic, copy)		NSString			*name;
 
 /* Init */
 - (id)initSqlStatementWithSQL:(NSString *)sql;
 + (PYSqlStatement *)sqlStatementWithSQL:(NSString *)sql;
+
+/* Prepare the statement */
+- (BOOL)prepareStatementWithDB:(id)db;
 
 /* Finalized the statement */
 - (void)finalizeStatement;
@@ -69,6 +61,9 @@
 - (void)resetBinding;
 /* prepare for reading */
 - (void)prepareForReading;
+
+/* Step the statement */
+- (NSInteger)step;
 
 /* Bind the data in the statement */
 - (void)bindInOrderInt:(int)value;

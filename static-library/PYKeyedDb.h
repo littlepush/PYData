@@ -41,9 +41,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "PYDataPredefination.h"
 #import "PYSqlStatement.h"
-#import "PYcore.h"
+#import <PYCore/PYCore.h>
 
 #define		kKeyedDBTableName		@"_PYkeyedCache"
 
@@ -56,22 +55,6 @@
 @end
 
 @interface PYKeyedDb : NSObject
-{
-	sqlite3				*_innerDb;
-    NSString            *_dbPath;
-    
-    PYSqlStatement      *_insertStat;
-    PYSqlStatement      *_updateStat;
-    PYSqlStatement      *_deleteStat;
-    PYSqlStatement      *_countStat;
-    PYSqlStatement      *_selectStat;
-    PYSqlStatement      *_checkStat;
-    
-    PYSqlStatement      *_selectKeys;
-    PYSqlStatement      *_searchKeys;
-    
-    NSString            *_cacheTbName;
-}
 
 // Set the keyed db default date object class.
 // Default is PYDate.

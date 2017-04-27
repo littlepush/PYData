@@ -41,7 +41,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "PYCore.h"
+#import <PYCore/PYCore.h>
 #import "PYKeyedDb.h"
 
 // The GDC init options supported key.
