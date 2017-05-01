@@ -156,49 +156,49 @@ static Class                        _keyedDbDateClass;
         NSString *_insertSql = [NSString stringWithFormat:
                                 @"INSERT INTO %@ VALUES(?, ?, ?);", cacheTbname];
         _insertStat = [PYSqlStatement sqlStatementWithSQL:_insertSql];
-        if ( ![_insertStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
+        if ( ![_insertStat prepareStatementWithDB:(void *)(_innerDb)] ) return NO;
 
         // Update
         NSString *_updateSql = [NSString stringWithFormat:
                                 @"UPDATE %@ set dbValue=?, dbExpire=? WHERE dbKey=?", cacheTbname];
         _updateStat = [PYSqlStatement sqlStatementWithSQL:_updateSql];
-        if ( ![_updateStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
+        if ( ![_updateStat prepareStatementWithDB:(void *)(_innerDb)] ) return NO;
         
         // Delete
         NSString *_deleteSql = [NSString stringWithFormat:
                                 @"DELETE FROM %@ WHERE dbKey=?", cacheTbname];
         _deleteStat = [PYSqlStatement sqlStatementWithSQL:_deleteSql];
-        if ( ![_deleteStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
+        if ( ![_deleteStat prepareStatementWithDB:(void *)(_innerDb)] ) return NO;
         
         // Check
         NSString *_checkSql = [NSString stringWithFormat:
                                @"SELECT dbKey FROM %@ WHERE dbKey=?", cacheTbname];
         _checkStat = [PYSqlStatement sqlStatementWithSQL:_checkSql];
-        if ( ![_checkStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
+        if ( ![_checkStat prepareStatementWithDB:(void *)(_innerDb)] ) return NO;
         
         // Select
         NSString *_selectSql = [NSString stringWithFormat:
                                 @"SELECT dbValue, dbExpire FROM %@ WHERE dbKey=?", cacheTbname];
         _selectStat = [PYSqlStatement sqlStatementWithSQL:_selectSql];
-        if ( ![_selectStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
+        if ( ![_selectStat prepareStatementWithDB:(void *)(_innerDb)] ) return NO;
         
         // Count
         NSString *_countSql = [NSString stringWithFormat:
                                @"SELECT COUNT(dbKey) FROM %@", cacheTbname];
         _countStat = [PYSqlStatement sqlStatementWithSQL:_countSql];
-        if ( ![_countStat prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
+        if ( ![_countStat prepareStatementWithDB:(void *)(_innerDb)] ) return NO;
         
         // Select Keys
         NSString *_selectKeySql = [NSString stringWithFormat:
                                    @"SELECT dbKey FROM %@", cacheTbname];
         _selectKeys = [PYSqlStatement sqlStatementWithSQL:_selectKeySql];
-        if ( ![_selectKeys prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
+        if ( ![_selectKeys prepareStatementWithDB:(void *)(_innerDb)] ) return NO;
         
         // Search keys
         NSString *_searchKeySql = [NSString stringWithFormat:
                                    @"SELECT dbKey FROM %@ WHERE dbKey LIKE \'?\'", cacheTbname];
         _searchKeys = [PYSqlStatement sqlStatementWithSQL:_searchKeySql];
-        if ( ![_searchKeys prepareStatementWithDB:(__bridge id)(_innerDb)] ) return NO;
+        if ( ![_searchKeys prepareStatementWithDB:(void *)(_innerDb)] ) return NO;
 		return YES;
 	} else {
         NSLog(@"Failed to open sqlite at path: %@, error: %s", dbPath, sqlite3_errmsg(_innerDb));

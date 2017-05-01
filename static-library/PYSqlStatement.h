@@ -52,7 +52,7 @@
 + (PYSqlStatement *)sqlStatementWithSQL:(NSString *)sql;
 
 /* Prepare the statement */
-- (BOOL)prepareStatementWithDB:(id)db;
+- (BOOL)prepareStatementWithDB:(void *)db;
 
 /* Finalized the statement */
 - (void)finalizeStatement;

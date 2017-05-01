@@ -92,9 +92,9 @@
 }
 
 /* Prepare the statement */
-- (BOOL)prepareStatementWithDB:(id)db
+- (BOOL)prepareStatementWithDB:(void *)db
 {
-    sqlite3* _pdb = (__bridge sqlite3 *)(db);
+    sqlite3* _pdb = (sqlite3 *)(db);
     if (sqlite3_prepare_v2(_pdb, self->sqlString.UTF8String, -1,
                            &self->sqlstmt, NULL) != SQLITE_OK) {
         NSLog(@"Failed to initialize the statement: %s", sqlite3_errmsg(_pdb));
