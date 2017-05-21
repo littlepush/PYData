@@ -159,6 +159,14 @@
  get all objects in the list.
  */
 - (NSArray *)listPYObjectsForKey:(NSString *)key;
+/*!
+ get first object in the list.
+ */
+- (PYObject *)firstListPYObjectForKey:(NSString *)key;
+/*!
+ get last object in the list.
+ */
+- (PYObject *)lastListPYObjectForKey:(NSString *)key;
 
 @end
 

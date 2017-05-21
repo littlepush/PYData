@@ -96,6 +96,14 @@
  get all objects in the list.
  */
 - (NSArray *)listObjectsForKey:(NSString *)key;
+/*!
+ get first object in the list.
+ */
+- (id<NSCoding>)firstListObjectForKey:(NSString *)key;
+/*!
+ get last object in the list.
+ */
+- (id<NSCoding>)lastListObjectForKey:(NSString *)key;
 
 @end
 

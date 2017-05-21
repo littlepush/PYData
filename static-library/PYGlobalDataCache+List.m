@@ -77,6 +77,7 @@
  */
 - (void)appendObject:(id<NSCoding>)value forKey:(NSString *)key tolist:(NSString *)listKey
 {
+    if ( value == nil ) return;
     PYSingletonLock
     NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listKey];
     
@@ -115,6 +116,7 @@
  */
 - (void)insertObjectAtHead:(id<NSCoding>)value forKey:(NSString *)key tolist:(NSString *)listKey
 {
+    if ( value == nil ) return;
     PYSingletonLock
     NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listKey];
     
@@ -154,6 +156,7 @@
  */
 - (void)insertObject:(id<NSCoding>)value forKey:(NSString *)key before:(NSString *)objKey tolist:(NSString *)listKey
 {
+    if ( value == nil ) return;
     PYSingletonLock
     if ( [objKey length] == 0 ) {
         [self insertObjectAtHead:value forKey:key tolist:listKey];
@@ -161,7 +164,14 @@
     }
     
     NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listKey];
-    
+    // Check first
+    NSString *_list_first_key = [_internal_list_key stringByAppendingString:@"^first"];
+    NSString *_firstNodeKey = [self objectForKey:_list_first_key];
+    if ( [objKey isEqualToString:_firstNodeKey] ) {
+        [self insertObjectAtHead:value forKey:key tolist:listKey];
+        return;
+    }
+
     // Update list count
     int _count = [[self objectForKey:_internal_list_key] intValue];
     _count += 1;
@@ -188,9 +198,17 @@
  */
 - (void)insertObject:(id<NSCoding>)value forKey:(NSString *)key after:(NSString *)objKey tolist:(NSString *)listKey
 {
+    if ( value == nil ) return;
     PYSingletonLock
     NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", listKey];
+    NSString *_list_last_key = [_internal_list_key stringByAppendingString:@"^last"];
+    NSString *_lastNodeKey = [self objectForKey:_list_last_key];
     
+    if ( [_lastNodeKey isEqualToString:objKey] ) {
+        [self appendObject:value forKey:key tolist:listKey];
+        return;
+    }
+
     // Update list count
     int _count = [[self objectForKey:_internal_list_key] intValue];
     _count += 1;
@@ -343,6 +361,38 @@
         _node = [self objectForKey:_next_key];
     }
     return _array;
+    PYSingletonUnLock
+}
+/*!
+ get first object in the list.
+ */
+- (id<NSCoding>)firstListObjectForKey:(NSString *)key
+{
+    PYSingletonLock
+    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", key];
+    NSString *_list_first_key = [_internal_list_key stringByAppendingString:@"^first"];
+    NSString *_node = [self objectForKey:_list_first_key];
+    if ( [_node length] > 0 ) {
+        return [self objectForKey:_node];
+    } else {
+        return nil;
+    }
+    PYSingletonUnLock
+}
+/*!
+ get last object in the list.
+ */
+- (id<NSCoding>)lastListObjectForKey:(NSString *)key
+{
+    PYSingletonLock
+    NSString *_internal_list_key = [NSString stringWithFormat:@"%@#^list", key];
+    NSString *_list_last_key = [_internal_list_key stringByAppendingString:@"^last"];
+    NSString *_node = [self objectForKey:_list_last_key];
+    if ( [_node length] > 0 ) {
+        return [self objectForKey:_node];
+    } else {
+        return nil;
+    }
     PYSingletonUnLock
 }
 

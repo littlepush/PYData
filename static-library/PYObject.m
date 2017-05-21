@@ -229,6 +229,44 @@ static NSString *_keyUpdateTime = @"updateAt";
     }
     return _pyobjList;
 }
+/*!
+ get first object in the list.
+ */
+- (PYObject *)firstListPYObjectForKey:(NSString *)key
+{
+    NSDictionary *_result = (NSDictionary *)[self firstListObjectForKey:key];
+    if ( [_result isKindOfClass:[NSDictionary class]] == NO ) return nil;
+    NSString *_type = [_result stringObjectForKey:@"type" withDefaultValue:@""];
+    if ( [_type length] == 0 ) return nil;    // not support type
+    Class _cls = NSClassFromString(_type);
+    if ( _cls == NULL ) return nil;           // cannot find the object's type
+    PYObject *_object = [_cls new];
+    @try {
+        [_object objectFromJsonDict:_result];
+    } @catch( NSException *ex ) {
+        return nil;
+    }
+    return _object;
+}
+/*!
+ get last object in the list.
+ */
+- (PYObject *)lastListPYObjectForKey:(NSString *)key
+{
+    NSDictionary *_result = (NSDictionary *)[self lastListObjectForKey:key];
+    if ( [_result isKindOfClass:[NSDictionary class]] == NO ) return nil;
+    NSString *_type = [_result stringObjectForKey:@"type" withDefaultValue:@""];
+    if ( [_type length] == 0 ) return nil;    // not support type
+    Class _cls = NSClassFromString(_type);
+    if ( _cls == NULL ) return nil;           // cannot find the object's type
+    PYObject *_object = [_cls new];
+    @try {
+        [_object objectFromJsonDict:_result];
+    } @catch( NSException *ex ) {
+        return nil;
+    }
+    return _object;
+}
 
 @end
 
