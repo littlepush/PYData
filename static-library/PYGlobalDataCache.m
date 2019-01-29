@@ -334,17 +334,17 @@ static NSMutableDictionary		*_gdcDict;
 - (void)clearAllCacheData:(PYActionDone)done
 {
     BEGIN_ASYNC_INVOKE
-    [_lock lock];
-    [_innerDb clearDBData];
-    [_coreInMemCache removeAllObjects];
-    [_coreKeysCache removeAllObjects];
-    _cacheSizeInUse = 0;
-    _allObjectCount = 0;
-    _hitMemPercentage = 0.f;
-    _searchedTimes = 0;
-    _lastHitInMemKey = @"";
-    _lastSearchedKey = @"";
-    [_lock unlock];
+    [self->_lock lock];
+    [self->_innerDb clearDBData];
+    [self->_coreInMemCache removeAllObjects];
+    [self->_coreKeysCache removeAllObjects];
+    self->_cacheSizeInUse = 0;
+    self->_allObjectCount = 0;
+    self->_hitMemPercentage = 0.f;
+    self->_searchedTimes = 0;
+    self->_lastHitInMemKey = @"";
+    self->_lastSearchedKey = @"";
+    [self->_lock unlock];
     BEGIN_MAINTHREAD_INVOKE
     if (done) done();
     END_MAINTHREAD_INVOKE
